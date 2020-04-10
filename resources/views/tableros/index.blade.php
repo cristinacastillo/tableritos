@@ -51,7 +51,7 @@
 		<div class="col">
 			{{ $tableros->links() }}
 
-			{{ $tableros->onEachSide(5)->links() }}
+			{{-- $tableros->onEachSide(5)->links() --}}
 
 
 		</div>

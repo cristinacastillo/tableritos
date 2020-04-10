@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 // HOME
-Route::get('/', 'TableroController@index')->name('tablero.ver');
+//Route::get('/', 'TableroController@index')->name('tablero.ver');
 
-/*Route::get('tablero', 'TableroController@index')->name('tablero.ver');
-Route::get('/', 'HomeController@index')->name('home');*/
+Route::get('tablero', 'TableroController@index')->name('tablero.ver');
+Route::get('/', 'HomeController@index')->name('home');
 
 // TABLERO
 Route::prefix('tablero')->group(function () {
@@ -53,5 +53,5 @@ Route::get('usuario/{user}', 'UsuarioController@view')->name('usuario.ver') ;
  * IMPORTANTE: la primera línea no se debe tocar y/o modificar. 
  */
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/home', 'TableroController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'TableroController@index')->name('home');

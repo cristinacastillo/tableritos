@@ -19,7 +19,7 @@ class TableroController extends Controller
      *
      * @return
      */
-    function list() {
+    public function list() {
         //$tableros = Tablero::all();
         //dd($tableros);
 
