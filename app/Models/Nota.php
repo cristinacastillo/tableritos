@@ -1,34 +1,45 @@
 <?php
 
+/**
+ * Antonio J.Sánchez 
+ * curso 2019/20
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Nota extends Model
 {
-    //
-    protected $table = 'nota' ;
+    // definimos el nombre de la tabla
+    protected $table = 'Nota' ;
+
+    // establecemos el campo de clave primaria
     protected $primaryKey = 'idNot' ;
 
+    // indicamos que no vamos a utilizar los campos created_at y updated_at
+    public $timestamps = false ;
+
     /**
-     * Devuelve el tablero al que pertenece una determinada nota
+     * Relación N:1 (muchos a uno) con la tabla TABLERO
+     * 
+     * @return Illuminate\Database\Eloquent\Collection
      */
     public function tablero()
     {
-        // una NOTA pertenece a un tablero
-    	return $this->belongsTo('App\Models\Tablero','idTab') ;
+    	return $this->belongsTo('App\Models\Tablero', 'idTab') ;
     }
 
-    public function etiquetas()
+    /**
+     * Cambia el estado del elemento.
+     * 
+     * @return Nota
+     */
+    public function cambiarEstado():Nota
     {
-        // una NOTA pertenece a varias etiquetas
-        // belongsToMany necesita varios parametros:
-        // · Objeto con el que estamos relacionando a NOTA
-        // · Tabla PIVOTE (nota_etiqueta)
-        // · ID de la tabla NOTA
-        // · ID de la tabla ETIQUETA
-        return $this->belongsToMany('App\Models\Etiqueta',
-                                    'nota_etiqueta','idNot','idTag') ;
+        // tell don't ask
+        $this->completado = !$this->completado ;
+        return $this ;
     }
-
+   
 }

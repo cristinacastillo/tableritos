@@ -1,27 +1,36 @@
 <?php
 
+/**
+ * Antonio J.Sánchez
+ * curso 2019/20
+ */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Tablero extends Model
 {
-    // indicamos el nombre de la tabla
-    protected $table = 'tablero';
+    // definimos el nombre de la tabla
+    protected $table = 'Tablero';
 
-    // modificamos la clave primaria por defecto
+    // establecemos el campo de clave primaria
     protected $primaryKey = 'idTab';
 
-    //
-    protected $fillable  = ['nombre', 'fecha'];
-
+    // utilizamos los campos updated_at y created_at
+    // el valor por defecto de $timestamps es true
     public $timestamps = false;
 
+    //
+    public $fillable = ['nombre', 'fecha'];
+
     /**
+     * Relación 1:N (uno a muchos) con la tabla NOTA
+     *
+     * @return Illuminate\Database\Eloquent\Collection
      */
     public function notas()
     {
-        // un TABLERO tiene varias notass
-        return $this->hasMany('App\Models\Nota', 'idTab');
+        return $this->hasMany('App\Models\Nota', 'idTab')->get();
     }
 }

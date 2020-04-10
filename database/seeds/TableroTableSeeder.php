@@ -1,7 +1,11 @@
 <?php
 
+/**
+ * Antonio J.Sánchez 
+ * curso 2019/20
+ */
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class TableroTableSeeder extends Seeder
 {
@@ -12,27 +16,19 @@ class TableroTableSeeder extends Seeder
      */
     public function run()
     {
+    	// creamos un array vacío
+        $data = [] ;
 
-        $faker = Faker\Factory::create();
+        // crear el objeto Faker
+        $faker = Faker\Factory::create() ;
 
-
-        // Creamos la colección de datos.
-        $data = [];
-
-
-        for ($i = 0; $i < 20; $i++) :
-
-            array_push($data, [
-
-                'nombre' => $faker->sentence(4, false),
-                'fecha' => $faker->date('Y-m-d'),
-            ]);
-
-        endfor;
-
-
-
-        // Insertamos los datos en la base de datos.
-        DB::table('tablero')->insert($data);
+        // 
+        for($i=0; $i < 55; $i++)
+        	array_push($data, [
+        						"nombre" => $faker->sentence(4),
+        						"fecha"  => $faker->date()
+	       					  ]) ;
+        //
+        DB::table('tablero')->insert($data) ;
     }
 }

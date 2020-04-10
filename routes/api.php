@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,21 @@ use Illuminate\Http\Request;
 |
 */
 
+
+/**
+ * Operación de la API de ejemplo:
+ * Devuelve un listado de los tableros que tengo en la base de datos
+ */
+
+Route::get('tableros','api\TableroController@list') ;
+Route::get('tablero/{id}', 'api\TableroController@info') ;
+
+
+
+
+
+
+/*NOS OLVIDAMOS DE MOMENTO*/
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

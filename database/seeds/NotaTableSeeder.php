@@ -1,7 +1,11 @@
 <?php
 
+/**
+ * Antonio J.Sánchez 
+ * curso 2019/20
+ */
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class NotaTableSeeder extends Seeder
 {
@@ -12,24 +16,21 @@ class NotaTableSeeder extends Seeder
      */
     public function run()
     {
+       	// creamos un array vacío
+        $data = [] ;
+
+        // crear el objeto Faker
+        $faker = Faker\Factory::create() ;
+
+        // 
+        for($i=0; $i < 35; $i++)
+        	array_push($data, [
+        						"idTab"      => $faker->numberBetween(1,50),
+        						"texto"      => $faker->sentence(4),
+        						"fecha"      => $faker->date(),
+        						"completado" => $faker->boolean
+	       					  ]) ;
         //
-
-        $faker = Faker\Factory::create();
-
-        $data = [];
-
-        for ($i = 0; $i < 50; $i++) :
-
-            array_push($data, [
-
-                'idTab' => $faker->numberBetween(1, 23),
-                'texto' => $faker->text(),
-                'fecha' => $faker->date('Y-m-d'),
-                'completado' => $faker->boolean(),
-            ]);
-
-        endfor;
-
-        DB::table('nota')->insert($data);
+        DB::table('nota')->insert($data) ;
     }
 }

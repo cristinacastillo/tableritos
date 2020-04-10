@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Antonio J.Sánchez
+ * curso 2019/20
+ */
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,13 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        $this->call(
-            [
-                TableroTableSeeder::class,
-                NotaTableSeeder::class,
-                //EtiquetaTableSeeder::class
-            ]
-        );
+        /*$this->call([
+        TableroTableSeeder::class,
+        NotaTableSeeder::class
+        ]);*/
+
+        $this->call(NotaTableSeeder::class);
     }
 }
